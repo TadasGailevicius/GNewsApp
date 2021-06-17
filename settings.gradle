@@ -1,0 +1,2 @@
+rootProject.name = "GNewsApp"
+include ':app'
