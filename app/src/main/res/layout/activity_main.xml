@@ -23,13 +23,15 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             >
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_launcher_background"
-                >
-            </com.google.android.material.imageview.ShapeableImageView>
+                android:hardwareAccelerated="false"
+                android:largeHeap="true"
+                android:src="@drawable/logo">
+            </ImageView>
+
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
