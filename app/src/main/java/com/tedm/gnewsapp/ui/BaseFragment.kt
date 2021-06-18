@@ -13,6 +13,4 @@ abstract class BaseFragment(layoutId: Int): Fragment(layoutId) {
             Snackbar.LENGTH_LONG
         ).show()
     }
-
-
 }

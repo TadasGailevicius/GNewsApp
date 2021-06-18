@@ -5,20 +5,6 @@
     <string name="search">Search</string>
     <string name="profile">Profile</string>
     <string name="more">More</string>
-    <string name="search_history">Search History</string>
-    <string name="filter">Filter</string>
-    <string name="date">Date</string>
-    <string name="apply_filter">Apply filter</string>
-    <string name="title">Title</string>
     <string name="description">Description</string>
-    <string name="content">Content</string>
-    <string name="apply">Apply</string>
 
-    <string name="example_post_text">Today is a good day to make a post in this social network, this is actually just an example text I write to have some lines of text</string>
-    <string name="search_hint">Search</string>
-    <string name="error_unknown">An unknown error occurred</string>
-    <string name="no_description">No Description</string>
-
-    <string name="edit_your_profile">Edit your Profile</string>
-    <string name="profile_updated">Profile updated</string>
 </resources>
