@@ -3,7 +3,6 @@ package com.tedm.gnewsapp.ui.home
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
 import com.tedm.gnewsapp.R
 import com.tedm.gnewsapp.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint

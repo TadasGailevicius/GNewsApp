@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.apply {
             background = null
             setupWithNavController(navHostFragment.findNavController())
-            setOnNavigationItemReselectedListener { Unit }
+            setOnNavigationItemReselectedListener { }
         }
     }
 

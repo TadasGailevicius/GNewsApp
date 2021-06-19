@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.tedm.gnewsapp.R
 import com.tedm.gnewsapp.data.local.entities.Article
 import kotlinx.android.synthetic.main.item_article.view.*
@@ -50,6 +51,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         holder.apply {
             itemView.item_article_content.text = article.title
             itemView.item_article_description.text = article.content
+            Glide.with(holder.itemView.getContext()).load(article.image).into(itemView.item_article_image)
 
             itemView.setOnClickListener {
                 onItemClickListener?.let { click ->
