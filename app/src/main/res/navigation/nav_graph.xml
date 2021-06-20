@@ -11,7 +11,11 @@
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.tedm.gnewsapp.ui.news.NewsFragment"
-        android:label="NewsFragment" />
+        android:label="NewsFragment" >
+        <action
+            android:id="@+id/action_newsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.tedm.gnewsapp.ui.search.SearchFragment"
@@ -24,4 +28,15 @@
         android:id="@+id/moreFragment"
         android:name="com.tedm.gnewsapp.ui.more.MoreFragment"
         android:label="MoreFragment" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.tedm.gnewsapp.ui.webview.WebViewFragment"
+        android:label="WebViewFragment" >
+        <action
+            android:id="@+id/action_webViewFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

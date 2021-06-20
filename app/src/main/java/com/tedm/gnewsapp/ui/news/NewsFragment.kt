@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tedm.gnewsapp.R
 import com.tedm.gnewsapp.adapters.NewsAdapter
@@ -31,14 +32,12 @@ class NewsFragment: BaseFragment(R.layout.fragment_news){
         setupSwipeRefreshLayout()
         subscribeToObservers()
 
-
-        /*
         newsAdapter.setOnItemClickListener {
             findNavController().navigate(
-                NotesFragmentDirections.actionNotesFragmentToNoteDetailFragment(it.id)
+                NewsFragmentDirections.actionNewsFragmentToWebViewFragment(it.id)
             )
         }
-        */
+
     }
 
     private fun subscribeToObservers() {

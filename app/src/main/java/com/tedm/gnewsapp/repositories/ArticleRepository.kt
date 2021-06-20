@@ -37,6 +37,8 @@ class ArticleRepository @Inject constructor(
         }
     }
 
+    fun observeArticleByID(articleID: Int) = newsDao.observeArticleById(articleID)
+
     private var curNewsResponse: Response<Articles>? = null
 
     suspend fun syncNews() {

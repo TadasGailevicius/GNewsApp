@@ -1,5 +1,6 @@
 package com.tedm.gnewsapp.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -18,4 +19,7 @@ interface NewsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticle(article: Article)
+
+    @Query("SELECT * FROM articles WHERE id = :articleID")
+    fun observeArticleById(articleID: Int): LiveData<Article>
 }
