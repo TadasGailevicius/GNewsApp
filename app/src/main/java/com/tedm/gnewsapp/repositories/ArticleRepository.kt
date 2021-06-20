@@ -1,16 +1,19 @@
 package com.tedm.gnewsapp.repositories
 
 import android.app.Application
+import android.util.Log
 import com.tedm.gnewsapp.data.local.NewsDao
 import com.tedm.gnewsapp.data.local.entities.Article
 import com.tedm.gnewsapp.data.remote.NewsApi
 import com.tedm.gnewsapp.data.remote.entities.Articles
-import com.tedm.gnewsapp.other.Resource
-import com.tedm.gnewsapp.other.checkForInternetConnection
-import com.tedm.gnewsapp.other.networkBoundResource
+import com.tedm.gnewsapp.other.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import javax.inject.Inject
+import java.io.IOException
+import java.util.*
 
 class ArticleRepository @Inject constructor(
     private val newsDao: NewsDao,
@@ -49,6 +52,14 @@ class ArticleRepository @Inject constructor(
         }
     }
 
+    suspend fun syncSearchNews() {
+        curNewsResponse = newsApi.searchForNews()
+        curNewsResponse?.body()?.let { articles ->
+            newsDao.deleteAllArticles()
+            insertArticles(articles)
+        }
+    }
+
     fun getAllArticles(): Flow<Resource<List<Article>>> {
         return networkBoundResource(
             query = {
@@ -56,6 +67,28 @@ class ArticleRepository @Inject constructor(
             },
             fetch = {
                 syncNews()
+                curNewsResponse
+            },
+
+            saveFetchResult = { response ->
+                response?.body()?.let {
+                    insertArticles(it)
+                }
+            },
+
+            shouldFetch = {
+                checkForInternetConnection(context)
+            }
+        )
+    }
+
+    fun getAllSearchArticles(): Flow<Resource<List<Article>>> {
+        return networkBoundResource(
+            query = {
+                newsDao.getAllArticles()
+            },
+            fetch = {
+                syncSearchNews()
                 curNewsResponse
             },
 
